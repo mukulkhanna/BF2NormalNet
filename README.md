@@ -4,11 +4,12 @@ This repository contains the code for our `Building Facades to Normal Maps – A
 
 #### [Paper]() | [Project page](https://mukulkhanna.github.io/building-facade-normal-estimation-crv/) 
 
-![](/assets/preview.png)
+![](https://user-images.githubusercontent.com/24846546/116396614-39260400-a843-11eb-9161-213e53e93c77.png)
+
 
 ## Downloads
 
-Please visit our [project website](https://mukulkhanna.github.io/building-facade-normal-estimation-crv/) for the overview and download links of the custom Synthia dataset with building plane instance annotations and normal maps. The Holicity dataset can be downlaoded from their [website](https://holicity.io
+Please visit our [project website](https://mukulkhanna.github.io/bf2normalnet/) for the overview and download links of the custom Synthia dataset with building plane instance annotations and normal maps. The Holicity dataset can be downlaoded from their [website](https://holicity.io
 ).
 
 ## Pre-requisites
@@ -16,7 +17,7 @@ Please visit our [project website](https://mukulkhanna.github.io/building-facade
 - Install all dependencies: `pip install -r requirements.txt`
 - Download Synthia dataset, unzip, and place all contents inside `data/synthia` folder.
 
-(Currently the data-loader only supports the custom Synthia dataset.)
+Note: Currently the data-loader only supports the custom Synthia dataset.
 
 
 ## Usage
@@ -55,15 +56,7 @@ optional arguments:
 
 ### Prediction
 
-After training your model and saving it to MODEL.pth, you can easily test the output masks on your images via the CLI.
-
-To predict a single image and save it:
-
-`python predict.py -i image.jpg -o output.jpg`
-
-To predict a multiple images and show them without saving them:
-
-`python predict.py -i image1.jpg image2.jpg --viz --no-save`
+After training your model, you can easily test the output normal maps on your test images using the checkpoints through the following command.
 
 ```shell script
 > python predict.py -h
@@ -94,14 +87,6 @@ optional arguments:
 You can specify which model file to use with `--model MODEL.pth`.
 
 
-### Pretrained model
-A [pretrained model](https://github.com/milesial/Pytorch-UNet/releases/tag/v1.0) is available for the Carvana dataset. It can also be loaded from torch.hub:
-
-```python
-net = torch.hub.load('milesial/Pytorch-UNet', 'unet_carvana')
-```
-The training was done with a 100% scale and bilinear upsampling.
-
 ## Tensorboard
 You can visualize in real time the train and test losses, along with the model predictions with tensorboard:
 
@@ -113,11 +98,3 @@ You can find a sample training run of an experiment with the Synthia dataset on 
 ## Acknowledgement
 
 This repository has utilized code from the Pytorch-UNet(https://github.com/milesial/Pytorch-UNet) and [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) for the UNet and discriminator implementations.
-
-<style>
-
-code {
-  color: pink;
-}
-
-</style>
