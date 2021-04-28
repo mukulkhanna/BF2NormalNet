@@ -60,29 +60,22 @@ After training your model, you can easily test the output normal maps on your te
 
 ```shell script
 > python predict.py -h
-usage: predict.py [-h] [--model FILE] --input INPUT [INPUT ...]
-                  [--output INPUT [INPUT ...]] [--viz] [--no-save]
-                  [--mask-threshold MASK_THRESHOLD] [--scale SCALE]
+usage: predict.py [-h] [--model FILE] [-d DATASET] [--save] [--scale SCALE]
+                  [--resnet]
 
-Predict masks from input images
+Predict normal maps for test images
 
 optional arguments:
   -h, --help            show this help message and exit
   --model FILE, -m FILE
                         Specify the file in which the model is stored
                         (default: MODEL.pth)
-  --input INPUT [INPUT ...], -i INPUT [INPUT ...]
-                        filenames of input images (default: None)
-  --output INPUT [INPUT ...], -o INPUT [INPUT ...]
-                        Filenames of ouput images (default: None)
-  --viz, -v             Visualize the images as they are processed (default:
-                        False)
-  --no-save, -n         Do not save the output masks (default: False)
-  --mask-threshold MASK_THRESHOLD, -t MASK_THRESHOLD
-                        Minimum probability value to consider a mask pixel
-                        white (default: 0.5)
+  -d DATASET, --dataset DATASET
+                        Dataset to be used (default: synthia)
+  --save, -sv           Save the results (default: False)
   --scale SCALE, -s SCALE
                         Scale factor for the input images (default: 0.5)
+  --resnet, -res        Use pre-trained resnet encoder. (default: False)
 ```
 You can specify which model file to use with `--model MODEL.pth`.
 

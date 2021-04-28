@@ -109,7 +109,7 @@ class NormalNet(nn.Module):
 
     def set_requires_grad(
         self,
-        nets: Union[List[NLayerDiscriminator], NLayerDiscriminator],
+        nets: Union[List[nn.Module], nn.Module],
         requires_grad: Optional[bool] = False,
     ) -> None:
         """Set requies_grad=False for all the networks to avoid unnecessary computations
@@ -352,9 +352,7 @@ class GANLoss(nn.Module):
         else:
             raise NotImplementedError("gan mode %s not implemented" % gan_mode)
 
-    def get_target_tensor(
-        self, prediction: torch.tensor, target_is_real: bool
-    ) -> torch.Tensor:
+    def get_target_tensor(self, prediction: torch.Tensor, target_is_real: bool):
         """Create label tensors with the same size as the input.
 
         Parameters:
