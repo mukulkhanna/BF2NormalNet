@@ -1,0 +1,7 @@
+__pycache__
+data
+runs
+results
+.mypy_cache
+.vscode
+*.pth
