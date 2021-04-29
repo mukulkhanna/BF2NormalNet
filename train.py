@@ -7,17 +7,17 @@ from typing import Optional
 
 import cv2
 import numpy as np
+from PIL import Image
+from tqdm import tqdm
+
 import torch
 import torch.nn as nn
-from PIL import Image
+from eval import eval_net
+from normal_net import NormalNet
 from torch import optim
 from torch.utils.data import DataLoader, random_split
 from torch.utils.tensorboard import SummaryWriter
-from tqdm import tqdm
-
-from eval import eval_net
-from normal_net import NormalNet
-from utils.dataset import HolicityDataset, SynthiaDataset
+from utils.dataset import SynthiaDataset
 
 dir_checkpoint = "checkpoints/"
 
@@ -53,28 +53,6 @@ def train_net(
             seg_masks_dir.format("test"),
             img_scale,
         )
-    elif args.dataset == "holicity":
-        dir_img = "data/holicity/rgb"
-        dir_mask = "data/holicity/normal"
-        dir_seg_mask = "data/holicity/semantic/"
-
-        train_list = "data/holicity/train-randomsplit.txt"
-        test_list = "data/holicity/test-randomsplit.txt"
-
-        train_dataset = HolicityDataset(
-            dir_img,
-            dir_mask,
-            dir_seg_mask,
-            img_scale,
-            file_list=train_list,
-            mode="train",
-        )
-        val_dataset = HolicityDataset(
-            dir_img, dir_mask, dir_seg_mask, img_scale, file_list=test_list, mode="val"
-        )
-
-        n_train = len(train_dataset)
-        n_val = len(val_dataset)
 
     train_loader = DataLoader(
         train_dataset,
@@ -183,7 +161,7 @@ def get_args():
         "--epochs",
         metavar="E",
         type=int,
-        default=5,
+        default=50,
         help="Number of epochs",
         dest="epochs",
     )
@@ -193,7 +171,7 @@ def get_args():
         metavar="B",
         type=int,
         nargs="?",
-        default=1,
+        default=2,
         help="Batch size",
         dest="batchsize",
     )

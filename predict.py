@@ -3,16 +3,16 @@ import logging
 import os
 
 import numpy as np
+from PIL import Image
+
 import torch
 import torch.nn.functional as F
-from PIL import Image
+from eval import eval_net
+from normal_net import NormalNet
 from torch import nn
 from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
-
-from eval import eval_net
-from normal_net import NormalNet
-from utils.dataset import HolicityDataset, SynthiaDataset
+from utils.dataset import SynthiaDataset
 
 
 def get_args():

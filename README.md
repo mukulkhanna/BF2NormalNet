@@ -33,9 +33,9 @@ Train the NormalNet on images and target normal maps.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -e E, --epochs E      Number of epochs (default: 5)
+  -e E, --epochs E      Number of epochs (default: 50)
   -b [B], --batch-size [B]
-                        Batch size (default: 1)
+                        Batch size (default: 2)
   -l [LR], --learning-rate [LR]
                         LearningFalse rate (default: 0.0001)
   -f LOAD, --load LOAD  Load model from a .pth file (default: False)
@@ -50,8 +50,9 @@ optional arguments:
 
 ```
 - By default, `--scale` is set to 0.5, so if you wish to obtain better results (but use more memory), set it to 1.
-- Add `--resnet` to use the pre-trained resnet encoder.
-- Add `--disc` to use the PatchGAN discriminator.
+- Default code configuration corresponds to the UNet-only baseline. Use below mentioned flags for training network variants --
+  - Add `--resnet` to use the pre-trained resnet encoder.
+  - Add `--disc` to use the PatchGAN discriminator.
 
 
 ### Prediction

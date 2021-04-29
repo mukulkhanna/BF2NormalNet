@@ -3,13 +3,13 @@ from typing import Optional
 
 import cv2
 import numpy as np
+from tqdm import tqdm
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.utils.tensorboard import SummaryWriter
-from tqdm import tqdm
-
 from normal_net import NormalNet
+from torch.utils.tensorboard import SummaryWriter
 
 
 def eval_net(
@@ -96,8 +96,8 @@ def eval_net(
                 median_ang, median_ang * 180 / np.pi
             )
         )
-        logging.info("% of angles less than 10 deg: {:.2f}%".format(p11))
-        logging.info("% of angles less than 20 deg: {:.2f}%".format(p22))
+        logging.info("% of angles less than 11.25 deg: {:.2f}%".format(p11))
+        logging.info("% of angles less than 22.5 deg: {:.2f}%".format(p22))
         logging.info("% of angles less than 30 deg: {:.2f}%".format(p30))
         logging.info("% of angles less than 60 deg: {:.2f}%".format(p60))
 
