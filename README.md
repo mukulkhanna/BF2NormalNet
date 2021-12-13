@@ -2,7 +2,7 @@
 
 This repository contains the code for our `Building Facades to Normal Maps – Adversarial Learning from Single View Images` work accepted at [`CRV 2021`](https://www.computerrobotvision.org/).
 
-#### [Paper]() | [Project page](https://mukulkhanna.github.io/building-facade-normal-estimation-crv/) 
+#### [Paper](https://ieeexplore.ieee.org/abstract/document/9469450) | [Project page](https://mukulkhanna.github.io/building-facade-normal-estimation-crv/) 
 
 ![](https://user-images.githubusercontent.com/24846546/116396614-39260400-a843-11eb-9161-213e53e93c77.png)
 
